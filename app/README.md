@@ -1,24 +1,13 @@
-# README
+# SocialTags App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tools to parse metadata for a url and extract social tags like
+open graph & twitter tags.
 
-Things you may want to cover:
+## Dependencies
 
-* Ruby version
+  * 🚄 Rails 7
+  * ✈️ Propshaft
+  * ⚙️ jsbundling / esbuild
+  * 🎨 cssbundling / postcss
+  * 💾 SQLite3 (in ✨ Production ✨)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
