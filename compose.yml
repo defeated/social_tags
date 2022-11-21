@@ -1,0 +1,25 @@
+services:
+
+  app:
+    build:
+      dockerfile: Dockerfile
+      target: app-development
+    command: ["bin/dev"]
+    tty: true
+    ports: ["3000:3000"]
+    environment:
+      - RAILS_ENV
+      - RAILS_MAX_THREADS=1
+      - WEB_CONCURRENCY=0
+    volumes:
+      - ./gems:/gems
+      - ./app:/app
+      - data_bundler:/usr/local/bundle
+      - data_node:/app/node_modules
+    tmpfs:
+      - /tmp
+      - /app/tmp
+
+volumes:
+  data_bundler:
+  data_node:

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 if ! foreman version &> /dev/null
 then
@@ -6,4 +6,4 @@ then
   gem install foreman
 fi
 
-foreman start -f Procfile.dev "$@"
+exec foreman start -f Procfile.dev "$@"
