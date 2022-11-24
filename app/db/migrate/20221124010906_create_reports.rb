@@ -1,7 +1,7 @@
 class CreateReports < ActiveRecord::Migration[7.0]
   def change
     create_table :reports, id: false do |t|
-      t.string :id, limit: 26, primary_key: true
+      t.binary :id, limit: 16, primary_key: true
 
       t.string :url
 
