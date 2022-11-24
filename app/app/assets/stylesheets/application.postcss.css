@@ -1,5 +1,5 @@
 /* Entry point for your PostCSS build */
 
-dt::after {
-  content: ": ";
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
