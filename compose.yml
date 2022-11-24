@@ -18,7 +18,8 @@ services:
       - data_node:/app/node_modules
     tmpfs:
       - /tmp
-      - /app/tmp
+      - /app/tmp/cache
+      - /app/tmp/pids
 
 volumes:
   data_bundler:
