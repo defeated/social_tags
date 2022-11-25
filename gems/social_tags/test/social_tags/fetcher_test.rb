@@ -3,7 +3,7 @@
 require "test_helper"
 
 class TestConnectionFactory
-  def self.build(cache: nil)
+  def self.build()
     mock.expect(:get, mock.expect(:body, "<html>"), [String])
   end
 end

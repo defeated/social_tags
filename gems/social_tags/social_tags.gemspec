@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   s.files = Dir["lib/**/*", "*.md", "*.txt", "sig/**/*.rbs"]
 
   s.add_dependency "faraday", "~> 2.7.1"
-  s.add_dependency "faraday-http-cache", "~> 2.4.1"
   s.add_dependency "faraday-follow_redirects", "~> 0.3.0"
   s.add_dependency "nokogiri", "~> 1.13.9"
 end

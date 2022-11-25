@@ -9,12 +9,13 @@ class ReportsController < ApplicationController
   # GET /reports/1 or /reports/1.json
   def show
     url = @report.url
-    fetched = SocialTags::Fetcher.new(cache: Rails.cache).fetch(url: url)
-    if fetched.success?
-      @parsed = SocialTags::Parser.new(html: fetched.body).parse
-    else
-      flash.now.alert = "Sorry, could not reach #{url}"
+
+    @parsed = Rails.cache.fetch url, expires_in: 5.minutes do
+      fetched = SocialTags::Fetcher.new.fetch(url: url)
+      SocialTags::Parser.new(html: fetched.body).parse if fetched.success?
     end
+
+    flash.now.alert = "Sorry, could not reach #{url}" unless @parsed
   end
 
   # GET /reports/new
