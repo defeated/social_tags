@@ -9,8 +9,8 @@ module SocialTags
     end
 
     def inspect
-      fetched = SocialTags::Fetcher.new.fetch(url: @url)
-      tags = SocialTags::Parser.new(html: fetched.body).parse
+      fetched = Fetcher.new.fetch(url: @url).body
+      tags = Parser.new(html: fetched).parse
     rescue StandardError => error
     ensure
       return Page.new(success: !error, tags: tags || {}, error: error&.message)
