@@ -9,6 +9,7 @@ services:
     ports: ["3000:3000"]
     environment:
       - RAILS_ENV
+      - RAILS_LOG_TO_STDOUT=true
       - RAILS_MAX_THREADS=1
       - WEB_CONCURRENCY=0
     volumes:

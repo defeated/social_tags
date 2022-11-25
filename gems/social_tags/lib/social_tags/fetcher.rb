@@ -18,6 +18,8 @@ module SocialTags
 
       def self.build()
         Faraday.new headers: {user_agent: USER_AGENT} do |conn|
+          conn.response :logger
+          conn.response :raise_error
           conn.response :follow_redirects, standards_compliant: true, limit: 5
         end
       end
