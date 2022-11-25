@@ -26,6 +26,6 @@
 </div>
 
 <% if @parsed %>
-  <%= render partial: "report_tags", object: @parsed[:ogs], locals: { title: "Open Graph Tags", description: "" } %>
-  <%= render partial: "report_tags", object: @parsed[:tws], locals: { title: "Twitter Tags", description: "" } %>
+  <%= render partial: "report_tags", object: @parsed[:ogs] || {}, locals: { title: "Open Graph Tags", description: "" } %>
+  <%= render partial: "report_tags", object: @parsed[:tws] || {}, locals: { title: "Twitter Tags", description: "" } %>
 <% end %>
