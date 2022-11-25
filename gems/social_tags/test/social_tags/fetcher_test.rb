@@ -2,20 +2,19 @@
 
 require "test_helper"
 
-class TestConnectionFactory
-  def self.build()
-    mock.expect(:get, mock.expect(:body, "<html>"), [String])
+class TestConnectionFactory < SocialTags::Fetcher::FaradayConnectionFactory
+  def self.build(adapter: :test)
+    stubs = Faraday::Adapter::Test::Stubs.new
+    stubs.get("https://example.com") { |env| [200, {}, "<html>"] }
+
+    super adapter: [adapter, stubs]
   end
 end
 
 describe SocialTags::Fetcher do
-  before do
-    @url = "https://example.com"
-    @fetcher = SocialTags::Fetcher.new factory: TestConnectionFactory
-  end
-
   it "scrapes html for a url" do
-    actual = @fetcher.fetch(url: @url).body
+    fetcher = SocialTags::Fetcher.new(factory: TestConnectionFactory)
+    actual = fetcher.fetch(url: "https://example.com").body
     expect(actual).must_equal "<html>"
   end
 end

@@ -16,8 +16,9 @@ module SocialTags
     class FaradayConnectionFactory
       USER_AGENT = "SocialTags LinkBot/1.0".freeze
 
-      def self.build()
+      def self.build(adapter: nil)
         Faraday.new headers: {user_agent: USER_AGENT} do |conn|
+          conn.adapter(*adapter)
           conn.response :logger
           conn.response :raise_error
           conn.response :follow_redirects, standards_compliant: true, limit: 5
