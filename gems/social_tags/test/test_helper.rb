@@ -9,6 +9,7 @@ class TestConnection < SocialTags::Connection
   def self.build(*)
     stubs = Faraday::Adapter::Test::Stubs.new
     stubs.get("https://example.com") { [200, {}, "<html>"] }
+    stubs.get("https://example.com/404") { [404, {}, "404 Not Found"] }
     super adapter: [Faraday.default_connection = :test, stubs]
   end
 end
