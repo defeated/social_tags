@@ -5,6 +5,17 @@ require "social_tags"
 
 require "minitest/autorun"
 
-def mock
-  Minitest::Mock.new
+class TestConnectionFactory < SocialTags::Fetcher::FaradayConnectionFactory
+  def self.build(*)
+    stubs = Faraday::Adapter::Test::Stubs.new
+    stubs.get("https://example.com") { [200, {}, "<html>"] }
+    super adapter: [Faraday.default_connection = :test, stubs]
+  end
+end
+
+class MiniTest::Test
+  def before_setup
+    super
+    SocialTags::Fetcher.connection = TestConnectionFactory
+  end
 end

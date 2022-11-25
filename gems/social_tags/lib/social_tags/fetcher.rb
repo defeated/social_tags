@@ -3,7 +3,12 @@ require "faraday/follow_redirects"
 
 module SocialTags
   class Fetcher
-    def initialize(factory: FaradayConnectionFactory)
+    class << self
+      attr_accessor :connection
+    end
+
+    def initialize
+      factory = self.class.connection || FaradayConnectionFactory
       @connection = factory.build
     end
 
