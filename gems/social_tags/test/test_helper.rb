@@ -1,8 +1,18 @@
 # frozen_string_literal: true
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
-require "social_tags"
 
+if ENV["COVERAGE"]
+  require "simplecov"
+  SimpleCov.start do
+    add_filter "/test/"
+    enable_coverage :branch
+    primary_coverage :branch
+  end
+end
+
+
+require "social_tags"
 require "minitest/autorun"
 
 class TestConnection < SocialTags::Connection

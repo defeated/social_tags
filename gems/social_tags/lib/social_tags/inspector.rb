@@ -13,7 +13,7 @@ module SocialTags
       tags = Parser.new(html: fetched).parse
     rescue StandardError => error
     ensure
-      return Page.new(success: !error, tags: tags || {}, error: error&.message)
+      return Page.new(success: !error, tags: Hash(tags), error: error&.message)
     end
   end
 end
