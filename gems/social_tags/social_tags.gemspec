@@ -20,4 +20,8 @@ Gem::Specification.new do |s|
   s.add_dependency "faraday", "~> 2.7.1"
   s.add_dependency "faraday-follow_redirects", "~> 0.3.0"
   s.add_dependency "nokogiri", "~> 1.13.9"
+
+  s.add_development_dependency "rake", "~> 13.0"
+  s.add_development_dependency "minitest", "~> 5.0"
+  s.add_development_dependency "simplecov", "~> 0.21"
 end
